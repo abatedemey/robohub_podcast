@@ -20,11 +20,9 @@ then
   exit 0
 fi
 
-#python find_latest_episode.py
-python prepare_id3_tags.py "$FILE" "$EPISODE_TITLE" "$EPISODE_NUMBER" "$RELEASE_DATE"
-#./upload_to_soundcloud.sh $FILE $EPISODE_TITLE
+#python src/find_latest_episode.py
+python src/prepare_id3_tags.py "$FILE" "$EPISODE_TITLE" "$EPISODE_NUMBER" "$RELEASE_DATE"
 
-#echo "Manually edit the soundcloud upload to enable downloads and include in RSS feed"
 echo "Episode has been prepared. Follow the instructions below to complete publishing: "
 echo "Step 1. Uploading the episode to soundcloud"
 echo "      a.  Go to soundcloud.com and upload the formatted episode."

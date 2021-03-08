@@ -12,7 +12,7 @@ class EpisodeAudioFile():
       self.episode_num = episode_num
       self.release_date = release_date
       self.year = release_date[0:4]
-      self.cover_art_path = "robohub_podcast_logo.jpg"
+      self.cover_art_path = "assets/robohub_podcast_logo.jpg"
       self.path_to_all_formatted_episodes = "episodes/ready_to_publish"
       self.path_to_unformatted_episode = os.path.join("episodes/unformatted", filename)
 
