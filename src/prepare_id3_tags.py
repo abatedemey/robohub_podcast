@@ -25,7 +25,11 @@ class EpisodeAudioFile():
       # Set tags
       self.audiofile.tag.artist = u"Robohub Podcast"
       self.audiofile.tag.album = u"Robohub - Connecting the robotics community to the world"
-      self.audiofile.tag.title = unicode(self.title, "utf-8")
+      self.audiofile.tag.title = self.title
+      print("audio tag: ")
+      print(self.audiofile.tag.title)
+      print("audio tag done ")
+
       self.audiofile.tag.track_num  = int(self.episode_num)
       self.audiofile.tag.composer = u"Produced by Robohub"
       self.audiofile.tag.release_date = self.year
@@ -55,9 +59,10 @@ class EpisodeAudioFile():
 
 if __name__ == "__main__":
   if len(sys.argv) != 5:
-    print "Please enter all input arguments. i.e.\n\t\
+    msg = "Please enter all input arguments. i.e.\n\t\
            python prepare_id3_tags.py <audio filename> \
            <episode title> <episode number> <release date 'YYYYMMDD'>"
+    print(msg)
     sys.exit(1)
   else:
     filename = sys.argv[1]
@@ -74,7 +79,7 @@ if __name__ == "__main__":
 
   # Exit if the file doesnt exist
   if not os.path.exists(episode_audio_file.path_to_unformatted_episode):
-    print "File does not exist"
+    print("File does not exist")
     sys.exit()
 
   # Edit episode id3 tags and rename the file
