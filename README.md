@@ -2,7 +2,7 @@
 Tools to automate production of Robohub Podcast episodes
 
 Usage:
-1. Download the desired episode and place it in `episodes/unformatted/<desired_episode>.mp3
+1. Download the desired episode and place it in `episodes/unformatted/<desired_episode>.mp3`
 
 2. run `./publish_episode.sh <filename> <episode_title> <episode_number> <release_date>`
 
