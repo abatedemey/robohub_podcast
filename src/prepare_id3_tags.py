@@ -1,39 +1,41 @@
 import eyed3
 import sys
-from datetime import datetime
 import os
 
 
 class EpisodeAudioFile():
 
     def __init__(self, filename, title, episode_num, release_date):
-      self.filename = filename
-      self.title = title
-      self.episode_num = episode_num
-      self.release_date = release_date
-      self.year = release_date[0:4]
-      self.cover_art_path = "assets/robohub_podcast_logo.jpg"
-      self.path_to_all_formatted_episodes = "episodes/ready_to_publish"
-      self.path_to_unformatted_episode = os.path.join("episodes/unformatted", filename)
+        self.filename = filename
+        self.title = title
+        self.episode_num = episode_num
+        self.release_date = release_date
+        self.year = release_date[0:4]
+        self.cover_art_path = "assets/robohub_podcast_logo.jpg"
+        self.path_to_all_formatted_episodes = "episodes/ready_to_publish"
+        self.path_to_unformatted_episode = os.path.join("episodes/unformatted", filename)
+        print("year = ", self.year)
 
-      self.audiofile = eyed3.load(self.path_to_unformatted_episode)
+        self.audiofile = eyed3.load(self.path_to_unformatted_episode)
 
     def set_id3_tags(self):
-      # Initialize tags
-      self.audiofile.initTag()
+        print()
+        # Initialize tags
+        self.audiofile.initTag()
 
-      # Set tags
-      self.audiofile.tag.artist = u"Robohub Podcast"
-      self.audiofile.tag.album = u"Robohub - Connecting the robotics community to the world"
-      self.audiofile.tag.title = self.title
-      print("audio tag: ")
-      print(self.audiofile.tag.title)
-      print("audio tag done ")
+        # Set tags
+        self.audiofile.tag.artist = u"Robohub Podcast"
+        self.audiofile.tag.album = u"Robohub - Connecting the robotics community to the world"
+        self.audiofile.tag.title = self.title
+        print("audio tag: ")
+        print(self.audiofile.tag.title)
+        print("audio tag done ")
 
-      self.audiofile.tag.track_num  = int(self.episode_num)
-      self.audiofile.tag.composer = u"Produced by Robohub"
-      self.audiofile.tag.release_date = self.year
-      self.audiofile.tag.recording_date = self.year
+        self.audiofile.tag.track_num  = int(self.episode_num)
+        self.audiofile.tag.composer = u"Produced by Robohub"
+        self.audiofile.tag.release_date = self.year
+        self.audiofile.tag.recording_date = self.year
+
 
     def set_cover_image(self):
       cover_art = open(self.cover_art_path, "rb").read()
@@ -66,13 +68,13 @@ if __name__ == "__main__":
     sys.exit(1)
   else:
     filename = sys.argv[1]
-    title = sys.argv[2] 
+    title = sys.argv[2]
     episode_num = sys.argv[3]
     release_date = sys.argv[4]
 
 
   episode_audio_file = EpisodeAudioFile(filename=filename,
-                                        title=title, 
+                                        title=title,
                                         episode_num=episode_num,
                                         release_date=release_date)
 

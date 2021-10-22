@@ -21,7 +21,7 @@ then
 fi
 
 #python src/find_latest_episode.py
-python src/prepare_id3_tags.py "$FILE" "$EPISODE_TITLE" "$EPISODE_NUMBER" "$RELEASE_DATE"
+python3 src/prepare_id3_tags.py "$FILE" "$EPISODE_TITLE" "$EPISODE_NUMBER" "$RELEASE_DATE"
 
 echo "Episode has been prepared. Follow the instructions below to complete publishing: "
 echo "Step 1. Uploading the episode to soundcloud"
